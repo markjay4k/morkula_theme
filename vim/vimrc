@@ -1,0 +1,72 @@
+call plug#begin()
+
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'davidhalter/jedi-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'LunarWatcher/auto-pairs'
+Plug 'junegunn/seoul256.vim'"
+Plug 'chriskempson/base16-vim'
+Plug 'wfxr/minimap.vim'
+Plug 'dracula/vim', {'as': 'dracula'}
+
+call plug#end()
+
+let g:palenight_color_overrides = {"black": {"gui": "#030e29", "cterm": "0", "cterm16": "0"}}
+let g:NERDTreeWinSize = 23
+
+if has("termguicolors")
+  set termguicolors
+endif
+
+if has("syntax")
+    syntax on
+endif
+
+let g:palenight_terminal_italics=1
+let g:seoul256_background = 23
+let base16colorspace = 256
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+
+" COLORSCHEME ----
+"colorscheme base16-default-dark
+"colorscheme seoul256
+"colorscheme purify 
+colorscheme dracula
+
+set background=dark
+
+"autocmd VimEnter * NERDTree | wincmd p
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+let g:jedi#show_call_signatures = 0
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+
+noremap <F4> :set hlsearch! hlsearch?<CR>
+"set hlsearch
+set viminfo+=n~/.vim/viminfo
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=79
+set expandtab
+set autoindent
+set fileformat=unix
+set relativenumber
+set number
+
+" Enable smooth scrolling
+set mouse=a
+set scrolloff=999
+set redrawtime=1000
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
